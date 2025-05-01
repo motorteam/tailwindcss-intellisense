@@ -19,7 +19,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 10
 
       - name: Install dependencies
         run: pnpm install
@@ -34,6 +34,11 @@ jobs:
             echo "The following files have been modified:"
             git status --porcelain
             echo "Please run the build script locally and commit the changes."
+
+            git diff packages/vscode-tailwindcss/dist/tailwindServer.js
+
+            git diff pnpm-lock.yaml
+            
             exit 1
           else
             echo "No differences found. Build verification passed!"
