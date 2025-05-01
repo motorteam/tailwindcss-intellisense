@@ -370,6 +370,8 @@
     "publish": "vsce publish --no-dependencies",
     "copy:notices": "cp ../tailwindcss-language-server/ThirdPartyNotices.txt ./dist/ThirdPartyNotices.txt",
     "vscode:prepublish": "pnpm run build && pnpm run copy:notices",
+    "generate-types": "tsc --declaration --emitDeclarationOnly --allowJs dist/extension.js",
+    "build-for-motor": "pnpm run build && pnpm run generate-types && cp ./src/extension.d.ts ./dist/extension.d.ts",
     "clean": "rimraf dist",
     "check": "tsc --noEmit"
   },

@@ -15,12 +15,7 @@ function getGlobalExcludePatterns(scope: ConfigurationScope | null): string[] {
 }
 
 export function getExcludePatterns(scope: ConfigurationScope | null): string[] {
-  return [
-    ...getGlobalExcludePatterns(scope),
-    ...(<string[]>workspace.getConfiguration('tailwindCSS', scope).get('files.exclude')).filter(
-      Boolean,
-    ),
-  ]
+  return [...getGlobalExcludePatterns(scope)]
 }
 
 export function isExcluded(file: string, folder: WorkspaceFolder): boolean {
