@@ -39,7 +39,7 @@ import { createApi } from './api'
 const colorNames = Object.keys(namedColors)
 
 const CLIENT_ID = 'tailwindcss-intellisense'
-const CLIENT_NAME = 'Tailwind CSS IntelliSense'
+const CLIENT_NAME = '(Motor) Tailwind CSS IntelliSense'
 
 let currentClient: Promise<LanguageClient> | null = null
 
@@ -546,7 +546,8 @@ export async function activate(context: ExtensionContext) {
     // Single file languages like JSON might handle files outside the workspace folders.
     if (!folder || isExcluded(document.uri.fsPath, folder)) return
 
-    if (!(await api.workspaceNeedsLanguageServer())) return
+    // Assume the workspace needs a language server, since all Motor projects will support tailwind
+    // if (!(await api.workspaceNeedsLanguageServer())) return
 
     await bootWorkspaceClient()
   }

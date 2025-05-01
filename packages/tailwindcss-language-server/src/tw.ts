@@ -185,6 +185,8 @@ export class TW {
     // and log a more helpful error message if it fails.
     let base = baseUri.fsPath
 
+    console.log(`[Global] Initializing workspace folder: ${base}`)
+
     try {
       await fs.access(base, fs.constants.F_OK | fs.constants.R_OK)
     } catch (err) {
@@ -285,6 +287,8 @@ export class TW {
 
       workspaceFolders = await locator.search()
     }
+
+    console.log(`[Global] Found ${workspaceFolders.length} Tailwind CSS projects in the workspace`)
 
     for (let project of workspaceFolders) {
       // Track the Tailwind version for a given config
@@ -628,6 +632,7 @@ export class TW {
     let readyDocuments: string[] = []
     let enabledProjectCount = 0
     for (let document of this.documentService.getAllDocuments()) {
+      console.log(`[Global] Initializing project for ${document.uri}`)
       let project = this.getProject(document)
       if (project && !project.enabled()) {
         project.enable()
@@ -912,6 +917,8 @@ export class TW {
     fsPath = normalizeDriveLetter(fsPath)
 
     for (let project of this.projects.values()) {
+      console.log('[GLOBAL] Checking project...')
+
       if (!project.projectConfig.configPath) {
         fallbackProject = fallbackProject ?? project
         continue

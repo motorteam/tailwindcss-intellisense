@@ -1,3 +1,17 @@
+# Motor fork of Tailwind
+
+## Special Notes
+
+This fork supports the tailwind IDE experience for the Motor extension. Its main function is to act as a library that the Motor extension can import and use. To that end, the output in `dist/` is tracked in git, and the following script must be run per latest commit (TODO: add a CI action that enforces this):
+
+```sh
+pnpm run --filter vscode-tailwindcss build-for-motor
+```
+
+---
+
+# Original README:
+
 <img src="https://raw.githubusercontent.com/tailwindlabs/tailwindcss-intellisense/main/packages/vscode-tailwindcss/.github/banner.png" alt="" />
 
 Tailwind CSS IntelliSense enhances the Tailwind development experience by providing Visual Studio Code users with advanced features such as autocomplete, syntax highlighting, and linting.
@@ -104,10 +118,7 @@ Example:
 
 ```javascript
 let classes = tw`flex bg-red-500`
-let classes2 = clsx([
-  "flex bg-red-500",
-  { "text-red-500": true }
-])
+let classes2 = clsx(['flex bg-red-500', { 'text-red-500': true }])
 ```
 
 ### `tailwindCSS.colorDecorators`
