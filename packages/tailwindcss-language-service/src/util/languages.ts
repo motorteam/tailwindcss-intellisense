@@ -1,62 +1,10 @@
 import type { EditorState } from './state'
 
-export const htmlLanguages = [
-  'aspnetcorerazor',
-  'astro',
-  'astro-markdown',
-  'blade',
-  'django-html',
-  'edge',
-  'ejs',
-  'erb',
-  'gohtml',
-  'GoHTML',
-  'gohtmltmpl',
-  'haml',
-  'handlebars',
-  'hbs',
-  'html',
-  'HTML (Eex)',
-  'HTML (EEx)',
-  'html-eex',
-  'htmldjango',
-  'jade',
-  'leaf',
-  'liquid',
-  'markdown',
-  'mdx',
-  'mustache',
-  'njk',
-  'nunjucks',
-  'phoenix-heex',
-  'php',
-  'razor',
-  'slim',
-  'surface',
-  'twig',
-]
+export const htmlLanguages = ['watt']
 
-export const cssLanguages = [
-  'css',
-  'less',
-  'postcss',
-  'sass',
-  'scss',
-  'stylus',
-  'sugarss',
-  'tailwindcss',
-]
+export const cssLanguages = ['css', 'tailwindcss']
 
-export const jsLanguages = [
-  'javascript',
-  'javascriptreact',
-  'reason',
-  'rescript',
-  'typescript',
-  'typescriptreact',
-  'glimmer-js',
-  'glimmer-ts',
-]
+export const jsLanguages = ['javascript', 'typescript']
 
 export const specialLanguages = ['vue', 'svelte']
 

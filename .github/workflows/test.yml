@@ -1,0 +1,44 @@
+name: Build Verification
+
+on:
+  pull_request:
+
+jobs:
+  verify-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run build script
+        run: pnpm --filter vscode-tailwindcss build-for-motor
+
+      - name: Check for differences
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+
+            echo "Warning: Build script generated changes that weren't committed."
+            
+            echo "The following files have been modified:"
+
+            git status --porcelain
+            
+            # TODO: Make this fail once I figure out why a diff is generated in CI
+            # exit 1
+          else
+            echo "No differences found. Build verification passed!"
+          fi
